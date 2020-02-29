@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace Pedidos.Models
 {
+    [Table("pedidos")]
     public class Pedido
     {
         [Key]
-        public String id { get; set; }
+        public int id { get; set; }
         [ForeignKey("idCLiente")]
-        public String idCLiente { get; set; }
+        public int idCLiente { get; set; }
         public DateTime fechaHoraReg { get; set; }
         public int idUsuarioReg { get; set; }
+        public virtual ICollection<PedidoDetalle> pedidoDetalle { get; set; }
     }
 }

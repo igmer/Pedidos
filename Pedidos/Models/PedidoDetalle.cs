@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace Pedidos.Models
 {
+    [Table("pedidoDetalles")]
     public class PedidoDetalle
     {
 
         public int id { get; set; }
-        [ForeignKey("idPedido")]
         public int idPedido { get; set; }
         [ForeignKey("idProducto")]
         public int idProducto { get; set; }
 
-        public double cantidad { get; set; }
-        public double precioUnitario { get; set; }
-        public double descuento { get; set; }
-        public double total { get; set; }
+        public decimal cantidad { get; set; }
+        public decimal precioUnitario { get; set; }
+        public decimal descuento { get; set; }
+        public decimal total { get; set; }
+        [ForeignKey("idPedido")]
+        public Pedido pedido { get; set; }
 
     }
 }

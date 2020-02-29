@@ -17,5 +17,6 @@ namespace Pedidos.Models
             public String otroDocumento {get; set;}
             public String giro {get; set;}
             public String telefono {get; set;}
+            public DateTime? fechaHoraReg {get; set;}
     }
 }

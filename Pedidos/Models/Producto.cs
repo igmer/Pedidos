@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace Pedidos.Models
 {
+    [Table("productos")]
     public class Producto
     {
         [Key]
         public int id { get; set; }
         public String nombre { get; set; }
         public String codigo { get; set; }
-        [ForeignKey("idSubCategoria")]
         public int idSubCategoria { get; set; }
+
+        [ForeignKey("idSubCategoria")]
+        public SubCategoria subCategoria { get; set; }
         public int exentoIva { get; set; }
     }
 }

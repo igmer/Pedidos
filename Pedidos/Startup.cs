@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Pedidos
 {
@@ -26,7 +27,9 @@ namespace Pedidos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                   .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                   .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<PedidoDbContext>(opciones => opciones.UseSqlServer(Configuration.GetConnectionString("conexionPedido")));
         }
 
